@@ -1,4 +1,8 @@
 /********************BODY***********************/
+* {
+    box-sizing: border-box;;
+    font-family: 'Open sans', bold;
+}
 body {
 	margin: 0px;
 }
@@ -12,10 +16,10 @@ body {
 }
 
 .header__h1 {
-    display: inline-block;
     text-transform: uppercase;
-    margin: 25px 0px 0px 10px;
+    margin: 12px 0px 18px 10px;
     font-weight: 800;
+    font-size: 2.5em;
 }
 
 .header__span {
@@ -26,17 +30,19 @@ body {
 	display: flex;
 	flex-direction: row;
     margin-right: 10px;
+    border: 3px solid #1F1F3D;
 }
 
 .header__div--search--icon {
-    height: 34px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
     background-color: #587A8A;
     margin-top: 12px;
     margin-right: 0px;
     padding: 2%;
 }
 .header__div--search {
+    font-size: 1em;
     height: 40px;
     width: 250px;
     border-radius: 0px 5px 5px 0px;
@@ -45,11 +51,11 @@ body {
 
 /*******************MAIN CONTENT********************/
 .main__content {
-	display: grid;
-	grid-template-columns: 35% 65%;
+	display: flex;
+	/*grid-template-columns: 35% 65%;*/
 	height: 100vh;
-	grid-template-areas: 
-	"aside main"	
+	/*grid-template-areas: */
+	/*"aside main"	*/
 }
 /*******************MAIN ASIDE**********************/
 .main__aside {
@@ -67,6 +73,7 @@ body {
     margin-bottom: 0px;
 }
 .aside__input1 {
+    font-size: 1em;
     height: 40px;
     width: 300px;
     min-width: 60%;
@@ -75,55 +82,97 @@ body {
     padding: 0px;
     border-radius: 5px;
 }
+
+.aside__tasks{
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.new__task {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.task__body {
+    margin: 0;
+}
+
+.aside__task--delete {
+    height: 20px;
+    width: 20px;
+    margin: 17px 10px 0px 0px;
+}
+
 .aside__div {
     display: flex;
     flex-direction: row;
     width: 100%;
     height:40px;
+    border: 3px solid #58788A;
 }
+
 .aside__input2 {
+    font-size: 1em;
     height: 40px;
-    width: 260px;
+    width: 267px;
     min-width: 60%;
     display: block;
     margin: 5px 0px 10px 25px;
     padding: 0px;
     border-radius: 5px;
 }
+
 .aside__plus{
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     color: white;
     background-color: #1F1F3D;
     margin-top: 5px;
     padding: 2%;
 }
+
 .aside__task,
 .aside__clear,
 .aside__filter {
-	margin: 20px;
+    margin: 20px 27px;
     height: 7%;
-    width: 90%;
+    width: 88%;
     font-weight: 700;
     color: #FFFFFF;
     background-color: #1F1F3D;
     border: none;
     font-size: 1.3em;
 }
+
 .aside__line {
     width: 100%;
     height: 1px;
     border-top: 2px solid #3C6577;
 }
 /*******************MAIN SECTION********************/
-.main_section {
-	grid-area: main;
+.main__section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 1;
+    width: 100%;
+}
+
+.main__section--prompt {
+    font-size: 3em;
+    font-weight: 800;
 }
 
 .main__section__article {
-    width: 40%;
-    height: auto;
-    border: 2px solid #C7D3D8
+    width: 45%;
+    height: 415px;
+    border: 2px solid #C7D3D8;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .article__h2 {
@@ -136,18 +185,19 @@ body {
 .article__ul {
     color: #1F1F3D;
     margin: 5px 5px 5px 5px;
-    height: 180px;
-    width: 200px;
+    height: 290px;
+    width: 98%;
 }
 
 .article__footer {
-    display: flex;
+display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 10%;
+    height: 15%;
     width: 100%;
     border-top: 2px solid #C7D3D8;
 }
+
 .delete__div,
 .urgent__div {
     display: flex;
@@ -157,10 +207,23 @@ body {
     width: 30%;
     height: 90%;
 }
+.delete__div:hover,
+.urgent__div:hover {
+    color: red;
+}
+
 .article__footer--urgent--text,
 .article__footer--delete--text {
     margin: 0px;    
     font-size: .8em;
+}
+
+.article__footer--urgent:hover {
+    content:url('images/urgent-active.svg');
+}
+
+.article__footer--delete:hover {
+    content:url('images/delete-active.svg');
 }
 .article__footer--urgent,
 .article__footer--delete {
