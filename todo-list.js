@@ -2,7 +2,7 @@ class ToDo {
 	constructor(obj) {
 		this.id = obj.id
 		this.title = obj.title
-		this.tasks = []
+		this.tasks = obj.tasks
 		this.urgent = obj.urgent || false
 	}
 
@@ -17,10 +17,18 @@ class ToDo {
 	}
 
 	updateToDo() {
-
+		this.urgent = !this.urgent;
 	}
 
-	updateTask() {
-
+	updateTask(task) {
+		this.tasks.push(task)
 	}
+}
+
+class Task {
+    constructor(obj) {
+        this.id = obj.id;
+        this.isCompleted = obj.isCompleted || false;
+        this.text = obj.text;
+    }
 }

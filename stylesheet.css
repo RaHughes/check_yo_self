@@ -36,7 +36,7 @@ body {
 .header__div--search--icon {
     height: 40px;
     width: 40px;
-    background-color: #587A8A;
+    background-color: #CDD3D9;
     margin-top: 12px;
     margin-right: 0px;
     padding: 2%;
@@ -105,6 +105,10 @@ body {
     height: 20px;
     width: 20px;
     margin: 17px 10px 0px 0px;
+}
+
+.aside__task--delete:hover {
+    content:url('images/delete-active.svg');
 }
 
 .aside__div {
@@ -183,10 +187,23 @@ body {
 }
 
 .article__ul {
+    display: flex;
+    flex-direction: column;
     color: #1F1F3D;
     margin: 5px 5px 5px 5px;
     height: 290px;
     width: 98%;
+    padding: 0px;
+}
+
+.article__item--li {
+    list-style-type:none;
+    margin: 5%; 
+}
+
+.article__img--checkbox {
+    height: 20px;
+    width: 20px;
 }
 
 .article__footer {
@@ -207,7 +224,9 @@ display: flex;
     width: 30%;
     height: 90%;
 }
-.delete__div:hover,
+.delete__div:hover {
+    color: red;
+}
 .urgent__div:hover {
     color: red;
 }
@@ -218,11 +237,11 @@ display: flex;
     font-size: .8em;
 }
 
-.article__footer--urgent:hover {
+.urgent__div:hover > .article__footer--urgent {
     content:url('images/urgent-active.svg');
 }
 
-.article__footer--delete:hover {
+.delete__div:hover > .article__footer--delete {
     content:url('images/delete-active.svg');
 }
 .article__footer--urgent,
