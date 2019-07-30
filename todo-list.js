@@ -4,6 +4,7 @@ class ToDo {
 		this.title = obj.title
 		this.tasks = obj.tasks || []
 		this.urgent = obj.urgent || false
+		this.completed = obj.completed || false;
 	}
 
 	saveToStorage(array) {
@@ -21,7 +22,7 @@ class ToDo {
 	}
 
 	updateTask() {
-		
+
 	}
 }
 
