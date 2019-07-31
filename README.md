@@ -20,4 +20,8 @@
 - JSON
 
 ### Desktop Comp Recreation
+![Screenshot](images/Comp-1)
 
+![Screenshot](images/Comp-2)
+
+![Screenshot](images/Comp-3)
