@@ -1,4 +1,5 @@
 /****************GLOBAL VARIABLES*********************/
+var searchBar = document.querySelector('.header__div--search');
 var taskTitleInput = document.querySelector('.aside__input1');
 var taskBodyInsert = document.querySelector('.aside__input2');
 var mainSection = document.querySelector('.main__section');
@@ -7,6 +8,7 @@ var makeTaskBtn= document.querySelector('.aside__task');
 var mainPrompt = document.querySelector('.main__section--prompt');
 var asidePlus = document.querySelector('.aside__plus');
 var clearAll = document.querySelector('.aside__clear');
+var filterUrgentBtn = document.querySelector('.aside__filter');
 var globalArray = [];
 var tasksArray = [];
 
@@ -20,7 +22,7 @@ mainSection.addEventListener('click', urgentTask);
 asideTasks.addEventListener('click', deleteAsideTask)
 clearAll.addEventListener('click', clearAllAside)
 mainSection.addEventListener('click', articleEvent)
-
+searchBar.addEventListener('keyup', filterSearch);
 /****************EVENT HANDLERS***********************/
 function mainEvent() {
 	removePrompt()
@@ -166,11 +168,9 @@ function buildTask(toDo) {
 
 function removeTask(event) {
 	var index = findToDoIndex(event)
-	if (globalArray[index].completed === true && event.target.className === 'article__footer--delete') {
+	if (globalArray[index].completed === true && event.target.classList.contains('article__img--delete--active')) {
 		globalArray[index].deleteFromStorage(findId(event));
 		event.target.closest('.main__section__article').remove();
-	} else if (globalArray[index].completed === false) {
-		return 'Not completed mutha fucka'
 	}
 }
 
@@ -251,24 +251,40 @@ function italics(event) {
 
 function checkDeleteButton(event, array, toDo) {
 	var dltBtn = event.target.closest('.main__section__article').querySelector('.article__footer--delete');
-	dltBtn.disabled = true;
 	if (toDo.tasks.every(function(tasks) {
     	return tasks.isCompleted === true
 	})) {
   		toDo.completed = true;
+  		console.log('delete enabled', toDo.completed)
   		enableDltBtn(dltBtn)
   	} else {
   		toDo.completed = false;
+  		console.log('delete disabled', toDo.completed)
   		disbableDltBtn(dltBtn)
 	}
 }
 
 function enableDltBtn(dltBtn) {
+	dltBtn.disabled = false;
 	dltBtn.setAttribute("src", "images/delete-active.svg");
 	dltBtn.classList.add("article__img--delete--active");
 }
 
 function disbableDltBtn(dltBtn) {
+	dltBtn.disabled = true;
 	dltBtn.setAttribute("src", "images/delete.svg");
 	dltBtn.classList.remove("article__img--delete--active");
+}
+
+function filterSearch() {
+  var taskCards = document.querySelectorAll('.main__section__article');
+  var searchItems = searchBar.value.toUpperCase();
+  for (var i = 0; i < taskCards.length; i++) {
+    var titleText = taskCards[i].getElementsByClassName('article__h2')[0].innerText;
+    if (titleText.toUpperCase().includes(searchItems)) {
+      taskCards[i].style.display = 'inline';
+    } else {
+      taskCards[i].style.display = 'none';
+    }
+  }
 }
